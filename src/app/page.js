@@ -19,10 +19,10 @@ export default function Home() {
     if (query.length) {
       setLoading(true);
       try {
-        const res = await fetch(
-          `/api/openai?assistant=${"asst_ty2q2wM52LBUuTB0vcDBLTEz"}`,
-          { method: "POST", body: JSON.stringify({ query }) }
-        );
+        const res = await fetch(`/api/openai?assistant=${asst}`, {
+          method: "POST",
+          body: JSON.stringify({ query }),
+        });
         const { message } = await res.json();
         setMessage(message);
         setM;
@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen h-fit container mx-auto flex justify-center">
-      <div className="flex flex-col max-w-[700px] w-full mt-20 gap-3">
+      <div className="flex flex-col max-w-[700px] w-full mt-20 gap-3 p-4">
         <label>Select file</label>
         <select
           onChange={(e) => setAsst(e.target.value)}
